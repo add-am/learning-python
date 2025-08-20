@@ -1,5 +1,5 @@
 [project]
-name = "learnin-python"
+name = "Learning Python"
 version = "0.1.0"
 requires-python = ">= 3.13.7"
 dependencies = []
