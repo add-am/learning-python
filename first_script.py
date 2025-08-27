@@ -1,39 +1,43 @@
-print('Hello World')
-
-class Car:
-    speed = 0
-    started = False
+class Vehicle:
+    def __init__(self, started = False, speed = 0):
+        self.started = started
+        self.speed = speed
     
     def start(self):
         self.started = True
-        print("Car started.")
-
-    def accelerate(self, delta):
+        print("Vehicle on")
+    
+    def increase_speed(self, delta):
         if self.started:
             self.speed = self.speed + delta
-            print('Vroooom')
+            print("Vroom")
         else:
-            print('Start the car first.')
-
-    def stop(self):
-        self.speed = 0
-        print("Car stopped.")
-
-    def turn_off(self):
-        self.started = False
-        print('Car turned off')
+            print("Turn the vehicle on")
 
 
-my_first_car = Car()
+class Car(Vehicle):
+    trunk_open = False
 
-type(my_first_car)
+    def open_trunk(self):
+        self.trunk_open = True
 
+    def close_trunk(self):
+        self.trunk_open = False
 
-my_first_car.start()
-my_first_car.accelerate(10)
-my_first_car.stop()
-my_first_car.turn_off()
+class Bike(Vehicle):
+    def __init__(self, center_stand_out = False):
+        self.center_stand_out = center_stand_out
+        super().__init__()
+    def start(self):
+        print("Sorry, out of fuel!")
 
-my_first_car.speed
+my_bike = Bike()
 
-my_first_car.started
+my_bike.speed
+
+my_bike.increase_speed(10)
+my_bike.start()
+
+my_car = Car()
+
+my_car.trunk_open
