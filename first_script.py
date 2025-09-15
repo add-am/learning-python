@@ -1,33 +1,50 @@
+my_iterable = range(1,3)
 
-numbers = [1,2,3,4]
+my_interator = my_iterable.__iter__()
 
-times_two = map(lambda x: x*2, numbers)
+my_interator.__next__()
 
-print(list(times_two))
+list(range(1,3))
 
-[x*2 for x in range(10)]
+my_string = "ABC"
+for letters in my_string:
+    print(letters)
+my_list = ["A", "B", "C"]
+for letters in my_list:
+    print(letters)
 
-[x + 4 for x in range(10) if x % 2 == 0]
+[x for x in range(1,10)]
+{x for x in [1,1,2,2,3,3,4,4,5,6]}
+[x for x in range(1,50) if x % 5 == 0]
 
-def some_func(val):
-    return val + 10
+d = {'name': "James", 'age': 23, 'country': 'Australia'}
+for k in d:
+    print(k)
+d.keys()
+d.values()
+for v in d.values():
+    print(v)
+d.items()
+for k,v in d.items():
+    print(f'The key is: {k} and the value is: {v}')
+[(k,v) for k,v in d.items()]
 
-[some_func(x) for x in range(10)]
 
-m = [[j for j in range(3)] for i in range(4)]
+class EvenNums:
+    val = 0
 
-[value for sublist in m for value in sublist]
+    def __iter__(self):
+        return(self)    
 
-[value
-    for sublist in m
-    for value in sublist]
+    def __next__(self):
+        self.val += 2
 
-{x for x in {1,2,3}}
+        if self.val > 8:
+            raise StopIteration
+        
+        return self.val
 
-{x for x in set([1,2,3,4,3,4,5]) if x % 2 == 0}
+even_numbers = EvenNums()
 
-{s for s in range(1,5) if s % 2}
-{s for s in range(1,5) if s % 2 == 0}
-{s for s in range(1,5)}
-
-{x: x**3 for x in range(10)}
+for x in even_numbers:
+    print(x)
